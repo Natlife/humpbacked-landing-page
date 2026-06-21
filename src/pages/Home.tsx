@@ -578,11 +578,14 @@ export default function Home({ setActiveTab }: HomeProps) {
                     borderRadius: 4,
                     cursor: "pointer",
                     boxShadow: "none",
-                    backgroundColor: "transparent",
-                    border: "none",
+                    backgroundColor: isDark ? "#111827" : "#ffffff",
+                    border: isDark
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "1px solid rgba(15,23,42,0.08)",
+                    overflow: "hidden",
                   }}
                 >
-                  <Box sx={{ overflow: "hidden", borderRadius: 4, height: 200, mb: 2.5 }}>
+                  <Box sx={{ overflow: "hidden", height: 200 }}>
                     <CardMedia
                       component="img"
                       image={post.image}
@@ -596,39 +599,41 @@ export default function Home({ setActiveTab }: HomeProps) {
                       }}
                     />
                   </Box>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      color: colors.primary,
-                      fontWeight: 800,
-                      letterSpacing: "0.05em",
-                      textTransform: "uppercase",
-                      mb: 1,
-                      display: "block",
-                    }}
-                  >
-                    {post.tag}
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, lineHeight: 1.4 }}>
-                    {post.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: theme.palette.text.secondary,
-                      mb: 2,
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {post.desc}
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: theme.palette.text.secondary, mt: "auto" }}>
-                    {post.date}
-                  </Typography>
+                  <Box sx={{ p: { xs: 2.5, md: 3 } }}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: colors.primary,
+                        fontWeight: 800,
+                        letterSpacing: "0.05em",
+                        textTransform: "uppercase",
+                        mb: 1,
+                        display: "block",
+                      }}
+                    >
+                      {post.tag}
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, lineHeight: 1.4 }}>
+                      {post.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: theme.palette.text.secondary,
+                        mb: 2,
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {post.desc}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: theme.palette.text.secondary, mt: "auto" }}>
+                      {post.date}
+                    </Typography>
+                  </Box>
                 </Card>
               </Grid>
             ))}

@@ -18,6 +18,7 @@ import {
   ListItemText,
   Checkbox,
   LinearProgress,
+  Link,
   useTheme,
 } from '@mui/material';
 import {
@@ -244,6 +245,13 @@ export default function Challenges() {
     return challengeList.filter((c) => selectedDifficulty === 'Tất cả' || c.difficulty === selectedDifficulty);
   }, [selectedDifficulty]);
 
+  const hashtags = [
+    { label: '#21days', href: 'https://www.instagram.com/explore/tags/21days/' },
+    { label: '#lungthangsongkhoe', href: 'https://www.instagram.com/explore/tags/lungthangsongkhoe/' },
+    { label: '#cotsong', href: 'https://www.instagram.com/explore/tags/cotsong/' },
+    { label: '#spine', href: 'https://www.instagram.com/explore/tags/spine/' },
+  ];
+
   return (
     <Box sx={{ backgroundColor: isDark ? '#0B1120' : colors.background, minHeight: '100vh', pb: 10 }}>
       {}
@@ -299,6 +307,154 @@ export default function Challenges() {
       </Box>
 
       <Container maxWidth="lg" sx={{ mt: 6 }}>
+        <Box
+          sx={{
+            position: 'relative',
+            overflow: 'hidden',
+            borderRadius: 6,
+            mb: 6,
+            minHeight: { xs: 360, md: 420 },
+            backgroundImage:
+              "linear-gradient(135deg, rgba(15,23,42,0.5) 0%, rgba(30,58,138,0.36) 46%, rgba(45,212,191,0.18) 100%), url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=80')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            boxShadow: '0 28px 60px rgba(15,23,42,0.18)',
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'radial-gradient(circle at top right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 30%)',
+            }}
+          />
+          <Box
+            sx={{
+              position: 'relative',
+              zIndex: 1,
+              p: { xs: 4, md: 5 },
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              minHeight: { xs: 360, md: 420 },
+            }}
+          >
+            <Box
+              sx={{
+                width: 68,
+                height: 68,
+                borderRadius: 3.5,
+                backgroundColor: 'rgba(255,255,255,0.14)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backdropFilter: 'blur(10px)',
+                mb: 3,
+              }}
+            >
+              <Box
+                component="svg"
+                viewBox="0 0 24 24"
+                sx={{ width: 34, height: 34, fill: '#ffffff' }}
+              >
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.12v13.18a2.67 2.67 0 1 1-2.67-2.67c.31 0 .61.05.89.15V9.48a5.8 5.8 0 0 0-.89-.07A5.79 5.79 0 1 0 15.82 15V8.32a7.93 7.93 0 0 0 4.64 1.49V6.69a4.77 4.77 0 0 1-.87 0Z" />
+              </Box>
+            </Box>
+
+            <Box sx={{ maxWidth: 720 }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: colors.secondary,
+                  fontWeight: 800,
+                  letterSpacing: '0.14em',
+                  display: 'block',
+                  mb: 1.5,
+                }}
+              >
+                CHIẾN DỊCH TIKTOK NỔI BẬT
+              </Typography>
+              <Typography
+                variant="h2"
+                sx={{
+                  color: '#ffffff',
+                  fontWeight: 900,
+                  fontSize: { xs: '2rem', md: '3.1rem' },
+                  lineHeight: 1.08,
+                  mb: 2,
+                }}
+              >
+                21 days transforming your spine
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'rgba(255,255,255,0.86)',
+                  fontSize: { xs: '1rem', md: '1.08rem' },
+                  lineHeight: 1.7,
+                  mb: 3,
+                  maxWidth: 640,
+                }}
+              >
+                Tham gia ngay thử thách "21 days transforming your spine" trên TikTok
+                và lan toả hành trình thay đổi tư thế, đứng thẳng hơn, sống khoẻ
+                hơn từ những bước nhỏ mỗi ngày.
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.2 }}>
+                {hashtags.map((tag) => (
+                  <Link
+                    key={tag.label}
+                    href={tag.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    underline="none"
+                    sx={{
+                      px: 1.8,
+                      py: 1,
+                      borderRadius: 99,
+                      backgroundColor: 'rgba(255,255,255,0.14)',
+                      color: '#ffffff',
+                      border: '1px solid rgba(255,255,255,0.16)',
+                      fontWeight: 700,
+                      fontSize: '0.92rem',
+                      backdropFilter: 'blur(8px)',
+                      '&:hover': {
+                        backgroundColor: 'rgba(255,255,255,0.2)',
+                      },
+                    }}
+                  >
+                    {tag.label}
+                  </Link>
+                ))}
+              </Box>
+            </Box>
+
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', mt: 4 }}>
+              <Button
+                variant="contained"
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noreferrer"
+                sx={{
+                  backgroundColor: colors.accent,
+                  color: colors.text,
+                  borderRadius: 99,
+                  px: 3.2,
+                  py: 1.3,
+                  fontWeight: 800,
+                  '&:hover': {
+                    backgroundColor: '#e28d04',
+                  },
+                }}
+              >
+                Tham gia trên TikTok
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+
         {}
         <Box sx={{ display: 'flex', gap: 1.5, mb: 5, flexWrap: 'wrap' }}>
           {difficulties.map((dif) => {

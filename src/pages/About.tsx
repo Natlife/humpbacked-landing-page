@@ -215,7 +215,7 @@ export default function About() {
       >
         <Container maxWidth="lg">
           <Grid container spacing={6} sx={{ alignItems: "center" }}>
-            <Grid size={{ xs: 12, md: 7 }}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <Typography
                 variant="overline"
                 sx={{
@@ -275,44 +275,6 @@ export default function About() {
               </Typography>
             </Grid>
 
-            <Grid size={{ xs: 12, md: 5 }}>
-              <Card
-                sx={{
-                  borderRadius: 6,
-                  p: 4,
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  backdropFilter: "blur(18px)",
-                }}
-              >
-                <Typography
-                  variant="overline"
-                  sx={{
-                    color: colors.secondary,
-                    fontWeight: 800,
-                    letterSpacing: "0.15em",
-                    display: "block",
-                    mb: 2,
-                  }}
-                >
-                  TẦM NHÌN
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 800, mb: 3, lineHeight: 1.4 }}
-                >
-                  Xây dựng một cộng đồng người trẻ chủ động chăm sóc sức khỏe
-                  cột sống.
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.7 }}
-                >
-                  Duy trì lối sống khoa học và nâng cao chất lượng cuộc sống
-                  lâu dài bằng những hành động nhỏ, dễ thực hiện mỗi ngày.
-                </Typography>
-              </Card>
-            </Grid>
           </Grid>
         </Container>
       </Box>
