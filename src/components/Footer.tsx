@@ -117,10 +117,30 @@ export default function Footer({ setActiveTab }: FooterProps) {
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mb: 3 }}>
               <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.74)" }}>
-                Email: lienhe@dungthang.vn
+                Email:{" "}
+                <Link
+                  href="mailto:lienhe@dungthang.vn"
+                  sx={{
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": { color: "#2DD4BF" },
+                  }}
+                >
+                  lienhe@dungthang.vn
+                </Link>
               </Typography>
               <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.74)" }}>
-                Hotline: 1900 6789
+                Hotline:{" "}
+                <Link
+                  href="tel:0967743646"
+                  sx={{
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": { color: "#2DD4BF" },
+                  }}
+                >
+                  0967743646
+                </Link>
               </Typography>
               <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.74)" }}>
                 Đồng hành cùng người trẻ vì một cột sống khỏe.

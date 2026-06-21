@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -37,6 +38,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('postura_theme_mode', mode);
   }, [mode]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
 
   const toggleTheme = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -110,7 +115,19 @@ export default function App() {
       <CssBaseline />
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Header activeTab={activeTab} setActiveTab={setActiveTab} mode={mode} toggleTheme={toggleTheme} />
-        <Box sx={{ flexGrow: 1 }}>{renderActivePage()}</Box>
+        <Box sx={{ flexGrow: 1, overflow: 'hidden', position: 'relative' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+            >
+              {renderActivePage()}
+            </motion.div>
+          </AnimatePresence>
+        </Box>
         <Footer setActiveTab={setActiveTab} />
       </Box>
     </ThemeProvider>
