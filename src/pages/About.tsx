@@ -1,45 +1,44 @@
 import { useState } from "react";
 import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  Avatar,
-  TextField,
-  Button,
-  Snackbar,
   Alert,
+  Avatar,
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Snackbar,
+  TextField,
+  Typography,
   useTheme,
-  CardMedia,
 } from "@mui/material";
 import {
-  LocalHospital as HealthIcon,
-  Science as ScienceIcon,
-  People as PeopleIcon,
-  ElectricBolt as BoltIcon,
-  TrendingUp as TrendingUpIcon,
+  AutoAwesome as AutoAwesomeIcon,
+  Groups as GroupsIcon,
+  Lightbulb as LightbulbIcon,
+  Verified as VerifiedIcon,
 } from "@mui/icons-material";
-
-
-
-
-
-
-
-
-
+import nganImage from "../assets/ngan.jpg";
+import phuongImage from "../assets/phuong.jpg";
 
 interface TeamMember {
   name: string;
   role: string;
-  avatar: string;
   bio: string;
+  avatar: string;
 }
 
 export default function About() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
+
+  const colors = {
+    primary: "#1E3A8A",
+    secondary: "#2DD4BF",
+    background: "#F8FAFC",
+    text: "#0F172A",
+    accent: "#F59E0B",
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -48,68 +47,59 @@ export default function About() {
     message: "",
     hp_field: "",
   });
-
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const stats = [
-    { value: "2024", label: "Thành lập" },
-    { value: "12K+", label: "Thành viên" },
-    { value: "20+", label: "Trường học đối tác" },
+  const pillars = [
+    {
+      icon: <LightbulbIcon sx={{ fontSize: 34, color: colors.primary }} />,
+      title: "Tầm nhìn",
+      desc: "Xây dựng một cộng đồng người trẻ chủ động chăm sóc sức khỏe cột sống, duy trì lối sống khoa học và nâng cao chất lượng cuộc sống lâu dài.",
+    },
+    {
+      icon: <VerifiedIcon sx={{ fontSize: 34, color: colors.secondary }} />,
+      title: "Sứ mệnh",
+      desc: "Nâng cao nhận thức, cung cấp kiến thức thực hành đúng và khuyến khích thay đổi hành vi qua các hoạt động tương tác gần gũi.",
+    },
+    {
+      icon: <GroupsIcon sx={{ fontSize: 34, color: colors.accent }} />,
+      title: "Giá trị cốt lõi",
+      desc: "Chủ động, khoa học, thực tiễn và bền vững là những nguyên tắc giúp chiến dịch tạo ra thay đổi lâu dài.",
+    },
+    {
+      icon: <AutoAwesomeIcon sx={{ fontSize: 34, color: colors.primary }} />,
+      title: "Mục tiêu",
+      desc: "Hỗ trợ học sinh, sinh viên và người trẻ hình thành những thói quen tốt để bảo vệ cột sống ngay từ hôm nay.",
+    },
   ];
 
-  const values = [
-    {
-      icon: <HealthIcon sx={{ fontSize: 36, color: "#6366F1" }} />,
-      title: "Vì sức khỏe cộng đồng",
-      desc: "Cung cấp các giải pháp chỉnh sửa tư thế hoàn toàn miễn phí và dễ tiếp cận nhất cho giới trẻ Việt Nam.",
-    },
-    {
-      icon: <ScienceIcon sx={{ fontSize: 36, color: "#10B981" }} />,
-      title: "Khoa học làm nền",
-      desc: "Mọi thông tin, hướng dẫn thực hành đều được tham vấn từ tài liệu y khoa và bác sĩ trị liệu chuyên khoa.",
-    },
-    {
-      icon: <PeopleIcon sx={{ fontSize: 36, color: "#F59E0B" }} />,
-      title: "Cộng đồng là sức mạnh",
-      desc: "Tạo môi trường đồng hành tập luyện mỗi ngày để gia tăng động lực hoàn thành mục tiêu chỉnh dáng.",
-    },
-    {
-      icon: <BoltIcon sx={{ fontSize: 36, color: "#EC4899" }} />,
-      title: "Đơn giản & Hiệu quả",
-      desc: "Chia nhỏ các bài tập thành các hành động cực kỳ dễ nhớ để thực hiện liên tục ngay tại chỗ học tập.",
-    },
+  const missions = [
+    "Nâng cao nhận thức về các nguy cơ từ tư thế sai.",
+    "Cung cấp kiến thức và kỹ năng thực hành đúng.",
+    "Khuyến khích thay đổi hành vi thông qua các hoạt động tương tác và trải nghiệm thực tế.",
+    "Góp phần giảm thiểu các vấn đề về cơ xương khớp ở người trẻ.",
+  ];
+
+  const coreValues = [
+    "Chủ động: Phòng ngừa tốt hơn điều trị.",
+    "Khoa học: Thông tin được xây dựng dựa trên các nguồn kiến thức đáng tin cậy.",
+    "Thực tiễn: Các giải pháp đơn giản, dễ áp dụng trong cuộc sống hằng ngày.",
+    "Bền vững: Hướng tới việc duy trì những thói quen tốt lâu dài.",
   ];
 
   const team: TeamMember[] = [
     {
-      name: "Nguyễn Thanh Tâm",
-      role: "Founder & Campaign Lead",
-      avatar:
-        "https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-58.jpg",
-      bio: "Sinh viên Y khoa Đại học Y Dược TP.HCM, mang đam mê chia sẻ thói quen bảo vệ xương khớp cho các bạn trẻ.",
+      name: "Bùi Mai Phương",
+      role: "Founder",
+      bio: "Sinh viên Học viện Báo chí và Tuyên truyền, kết nối các dự án học đường, triển khai các buổi workshop thực chia sẻ kiến thức về cột sống cho học sinh sinh viên.",
+      avatar: phuongImage,
     },
     {
-      name: "ThS. Nguyễn Thị Hương",
-      role: "Cố vấn chuyên môn",
-      avatar:
-        "https://cdn.sforum.vn/sforum/wp-content/uploads/2024/01/anh-meme-54.jpg",
-      bio: "Thạc sĩ, Giảng viên Vật lý trị liệu và Phục hồi chức năng với hơn 10 năm kinh nghiệm nghiên cứu cột sống.",
-    },
-    {
-      name: "Lê Minh Đức",
-      role: "Creative Director",
-      avatar:
-        "https://cdn.sforum.vn/sforum/wp-content/uploads/2024/01/anh-meme-51.jpg",
-      bio: "Phụ trách thiết kế trải nghiệm, xây dựng các bài viết minh họa trực quan dễ hiểu tiếp cận hàng triệu người học.",
-    },
-    {
-      name: "Trần Bảo Ngọc",
-      role: "Community Manager",
-      avatar:
-        "https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-70.jpg",
-      bio: "Kết nối các dự án học đường, triển khai các buổi workshop thực hành tư thế đứng thẳng cho học sinh sinh viên.",
+      name: "Đoàn Thảo Ngân",
+      role: "Co-founder",
+      bio: "Sinh viên Học viện Báo chí và Tuyên truyền, thiết kế trải nghiệm, xây dựng các bài viết minh hoạ trực quan để hiểu và tiếp cận hàng triệu bạn trẻ.",
+      avatar: nganImage,
     },
   ];
 
@@ -123,7 +113,6 @@ export default function About() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    
     if (formData.hp_field) {
       setFormData({
         name: "",
@@ -149,11 +138,9 @@ export default function About() {
 
     setErrorMsg("");
 
-    
     const existing = localStorage.getItem("postura_contacts");
     const contacts = existing ? JSON.parse(existing) : [];
 
-    
     const submissionData = {
       name: formData.name,
       email: formData.email,
@@ -161,17 +148,17 @@ export default function About() {
       message: formData.message,
       timestamp: new Date().toISOString(),
     };
+
     contacts.push(submissionData);
     localStorage.setItem("postura_contacts", JSON.stringify(contacts));
 
-    
     const scriptUrl = import.meta.env.VITE_GOOGLE_SHEET_URL || "";
 
     if (scriptUrl) {
       setIsSubmitting(true);
       fetch(scriptUrl, {
         method: "POST",
-        mode: "no-cors", 
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
@@ -197,7 +184,6 @@ export default function About() {
           setIsSubmitting(false);
         });
     } else {
-      
       setFormData({
         name: "",
         email: "",
@@ -212,219 +198,151 @@ export default function About() {
   return (
     <Box
       sx={{
-        backgroundColor: isDark ? "#121212" : "#ffffff",
+        backgroundColor: isDark ? "#0B1120" : colors.background,
         minHeight: "100vh",
         pb: 10,
       }}
     >
-      {}
       <Box
         sx={{
-          backgroundColor: "#111111",
+          background: isDark
+            ? "linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%)"
+            : "linear-gradient(135deg, #0F172A 0%, #1E3A8A 70%, #2DD4BF 160%)",
           color: "#ffffff",
           pt: { xs: 8, md: 12 },
           pb: { xs: 8, md: 12 },
-          borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-          position: "relative",
-          overflow: "hidden",
         }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={6} sx={{ alignItems: "center" }}>
-            {}
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 variant="overline"
                 sx={{
-                  color: "#6366F1",
+                  color: colors.secondary,
                   fontWeight: 800,
                   letterSpacing: "0.15em",
                   display: "block",
                   mb: 2,
                 }}
               >
-                VỀ DỰ ÁN ĐỨNG THẲNG
+                VỀ CHÚNG TÔI
               </Typography>
               <Typography
                 variant="h1"
                 sx={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontWeight: 900,
-                  fontSize: { xs: "2.2rem", sm: "3rem", md: "3.6rem" },
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
+                  fontSize: { xs: "2.2rem", sm: "3rem", md: "3.8rem" },
+                  lineHeight: 1.1,
                   mb: 3,
                 }}
               >
-                Chúng tôi tin rằng đứng thẳng là quyền của mọi người
+                Giới thiệu chiến dịch
               </Typography>
               <Typography
                 variant="body1"
                 sx={{
-                  color: "#9CA3AF",
+                  color: "rgba(255,255,255,0.84)",
                   fontSize: "1.05rem",
-                  lineHeight: 1.7,
-                  mb: 5,
-                  maxWidth: 580,
+                  lineHeight: 1.8,
+                  mb: 3,
+                  maxWidth: 760,
                 }}
               >
-                Đứng Thẳng là chiến dịch truyền thông xã hội phi lợi nhuận, được
-                thành lập bởi những người trẻ có chung niềm tin: sức khoẻ cột
-                sống không phải là xa xỉ phẩm, và mọi người đều có thể tiếp cận
-                thông tin đúng đắn.
+                Chúng tôi là nhóm sinh viên thực hiện chiến dịch truyền thông
+                thay đổi hành vi về bảo vệ sức khỏe cột sống dành cho thanh
+                thiếu niên và người trẻ. Xuất phát từ thực tế ngày càng nhiều
+                học sinh, sinh viên và nhân viên văn phòng phải học tập, làm
+                việc trong thời gian dài với máy tính và điện thoại, các vấn đề
+                như đau cổ vai gáy, đau lưng, gù lưng hay sai tư thế đang trở
+                nên phổ biến hơn bao giờ hết.
               </Typography>
-
-              {}
-              <Grid container spacing={3} sx={{ maxWidth: 500 }}>
-                {stats.map((s, idx) => (
-                  <Grid size={4} key={idx}>
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        fontWeight: 900,
-                        color: "#6366F1",
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      }}
-                    >
-                      {s.value}
-                    </Typography>
-                    <Typography
-                      variant="caption"
-                      sx={{ color: "#9CA3AF", display: "block", mt: 0.5 }}
-                    >
-                      {s.label}
-                    </Typography>
-                  </Grid>
-                ))}
-              </Grid>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "rgba(255,255,255,0.84)",
+                  fontSize: "1.05rem",
+                  lineHeight: 1.8,
+                  maxWidth: 760,
+                }}
+              >
+                Thông qua chiến dịch này, chúng tôi mong muốn nâng cao nhận
+                thức của cộng đồng về tầm quan trọng của việc duy trì tư thế
+                đúng trong học tập, làm việc và sinh hoạt hằng ngày. Không chỉ
+                cung cấp kiến thức, chiến dịch hướng tới việc khuyến khích và
+                hỗ trợ người trẻ hình thành những thói quen lành mạnh để bảo vệ
+                cột sống ngay từ hôm nay.
+              </Typography>
             </Grid>
 
-            {}
-            <Grid
-              size={{ xs: 12, md: 5 }}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <Box sx={{ position: "relative", width: "100%", maxWidth: 420 }}>
-                <Box
+            <Grid size={{ xs: 12, md: 5 }}>
+              <Card
+                sx={{
+                  borderRadius: 6,
+                  p: 4,
+                  backgroundColor: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(18px)",
+                }}
+              >
+                <Typography
+                  variant="overline"
                   sx={{
-                    width: "100%",
-                    height: 300,
-                    borderRadius: 6,
-                    overflow: "hidden",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    color: colors.secondary,
+                    fontWeight: 800,
+                    letterSpacing: "0.15em",
+                    display: "block",
+                    mb: 2,
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    image="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=800&q=80"
-                    alt="Group of founders"
-                    sx={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </Box>
-                {}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: -20,
-                    left: -20,
-                    backgroundColor: "rgba(17, 17, 17, 0.85)",
-                    backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
-                    borderRadius: 3,
-                    p: 2,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1.5,
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
-                  }}
+                  TẦM NHÌN
+                </Typography>
+                <Typography
+                  variant="h5"
+                  sx={{ fontWeight: 800, mb: 3, lineHeight: 1.4 }}
                 >
-                  <Avatar
-                    sx={{
-                      backgroundColor: "rgba(99, 102, 241, 0.15)",
-                      color: "#6366F1",
-                      width: 32,
-                      height: 32,
-                    }}
-                  >
-                    <TrendingUpIcon sx={{ fontSize: 16 }} />
-                  </Avatar>
-                  <Typography
-                    variant="caption"
-                    sx={{ fontWeight: 800, color: "#ffffff" }}
-                  >
-                    Chiến dịch toàn quốc
-                  </Typography>
-                </Box>
-              </Box>
+                  Xây dựng một cộng đồng người trẻ chủ động chăm sóc sức khỏe
+                  cột sống.
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.7 }}
+                >
+                  Duy trì lối sống khoa học và nâng cao chất lượng cuộc sống
+                  lâu dài bằng những hành động nhỏ, dễ thực hiện mỗi ngày.
+                </Typography>
+              </Card>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {}
-      <Box sx={{ py: { xs: 10, md: 14 } }}>
+      <Box sx={{ py: { xs: 10, md: 12 } }}>
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Typography
-              variant="overline"
-              sx={{
-                color: "#6366F1",
-                fontWeight: 800,
-                letterSpacing: "0.15em",
-                display: "block",
-                mb: 2,
-              }}
-            >
-              SỨ MỆNH CHIẾN DỊCH
-            </Typography>
-            <Typography
-              variant="h2"
-              sx={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 900,
-                fontSize: { xs: "2rem", md: "2.75rem" },
-                color: isDark ? "#ffffff" : "#111111",
-              }}
-            >
-              Vì sao chúng tôi làm điều này?
-            </Typography>
-          </Box>
-
           <Grid container spacing={4}>
-            {values.map((v, idx) => (
+            {pillars.map((item, idx) => (
               <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
                 <Card
                   sx={{
                     height: "100%",
+                    p: 3,
                     borderRadius: 4,
                     border: isDark
-                      ? "1px solid rgba(255,255,255,0.06)"
-                      : "1px solid rgba(0,0,0,0.04)",
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "1px solid rgba(15,23,42,0.08)",
                     boxShadow: "none",
-                    backgroundColor: isDark ? "#1a1a1a" : "#ffffff",
-                    p: 3,
+                    backgroundColor: isDark ? "#111827" : "#ffffff",
                   }}
                 >
-                  <Box sx={{ mb: 2.5 }}>{v.icon}</Box>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 800,
-                      mb: 1.5,
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      color: isDark ? "#ffffff" : "#111111",
-                    }}
-                  >
-                    {v.title}
+                  <Box sx={{ mb: 2.5 }}>{item.icon}</Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.5 }}>
+                    {item.title}
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{
-                      color: isDark ? "#9CA3AF" : "#6B7280",
-                      lineHeight: 1.6,
-                    }}
+                    sx={{ color: theme.palette.text.secondary, lineHeight: 1.7 }}
                   >
-                    {v.desc}
+                    {item.desc}
                   </Typography>
                 </Card>
               </Grid>
@@ -433,96 +351,175 @@ export default function About() {
         </Container>
       </Box>
 
-      {}
       <Box
         sx={{
-          py: { xs: 10, md: 14 },
-          backgroundColor: isDark ? "#181818" : "#F9FAFB",
+          py: { xs: 10, md: 12 },
+          backgroundColor: isDark ? "#0F172A" : "#ffffff",
         }}
       >
+        <Container maxWidth="lg">
+          <Grid container spacing={4}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Card
+                sx={{
+                  height: "100%",
+                  p: 4,
+                  borderRadius: 5,
+                  boxShadow: "none",
+                  border: isDark
+                    ? "1px solid rgba(255,255,255,0.08)"
+                    : "1px solid rgba(15,23,42,0.08)",
+                  backgroundColor: isDark ? "#111827" : colors.background,
+                }}
+              >
+                <Typography
+                  variant="overline"
+                  sx={{
+                    color: colors.primary,
+                    fontWeight: 800,
+                    letterSpacing: "0.15em",
+                    display: "block",
+                    mb: 2,
+                  }}
+                >
+                  SỨ MỆNH
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {missions.map((item, idx) => (
+                    <Typography
+                      key={idx}
+                      variant="body1"
+                      sx={{ color: theme.palette.text.secondary, lineHeight: 1.7 }}
+                    >
+                      {`- ${item}`}
+                    </Typography>
+                  ))}
+                </Box>
+              </Card>
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Card
+                sx={{
+                  height: "100%",
+                  p: 4,
+                  borderRadius: 5,
+                  boxShadow: "none",
+                  border: isDark
+                    ? "1px solid rgba(255,255,255,0.08)"
+                    : "1px solid rgba(15,23,42,0.08)",
+                  backgroundColor: isDark ? "#111827" : colors.background,
+                }}
+              >
+                <Typography
+                  variant="overline"
+                  sx={{
+                    color: colors.secondary,
+                    fontWeight: 800,
+                    letterSpacing: "0.15em",
+                    display: "block",
+                    mb: 2,
+                  }}
+                >
+                  GIÁ TRỊ CỐT LÕI
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {coreValues.map((item, idx) => (
+                    <Typography
+                      key={idx}
+                      variant="body1"
+                      sx={{ color: theme.palette.text.secondary, lineHeight: 1.7 }}
+                    >
+                      {`- ${item}`}
+                    </Typography>
+                  ))}
+                </Box>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box sx={{ py: { xs: 10, md: 12 } }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography
               variant="overline"
               sx={{
-                color: "#6366F1",
+                color: colors.primary,
                 fontWeight: 800,
                 letterSpacing: "0.15em",
                 display: "block",
                 mb: 2,
               }}
             >
-              BAN ĐIỀU HÀNH
+              ĐỘI NGŨ SÁNG LẬP
             </Typography>
             <Typography
               variant="h2"
               sx={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 900,
-                fontSize: { xs: "2rem", md: "2.75rem" },
-                color: isDark ? "#ffffff" : "#111111",
+                fontSize: { xs: "2rem", md: "2.8rem" },
+                color: isDark ? "#ffffff" : colors.text,
               }}
             >
-              Đội ngũ sáng lập và Cố vấn
+              2 người đồng hành xây dựng chiến dịch
             </Typography>
           </Box>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={4} sx={{ justifyContent: "center" }}>
             {team.map((member, idx) => (
-              <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
+              <Grid size={{ xs: 12, md: 5 }} key={idx}>
                 <Card
                   sx={{
                     height: "100%",
-                    borderRadius: 4,
-                    border: "none",
+                    borderRadius: 5,
+                    p: 4,
                     boxShadow: "none",
-                    backgroundColor: "transparent",
-                    textAlign: "center",
-                    p: 3,
+                    border: isDark
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "1px solid rgba(15,23,42,0.08)",
+                    backgroundColor: isDark ? "#111827" : "#ffffff",
                   }}
                 >
                   <Avatar
                     src={member.avatar}
                     alt={member.name}
                     sx={{
-                      width: 110,
-                      height: 110,
-                      mx: "auto",
+                      width: { xs: 112, md: 132 },
+                      height: { xs: 112, md: 132 },
                       mb: 3,
-                      border: `3px solid ${isDark ? "#333" : "#fff"}`,
-                      boxShadow: "0 10px 20px rgba(0,0,0,0.05)",
-                    }}
-                  />
-                  <Typography
-                    variant="h6"
-                    sx={{
+                      bgcolor: idx === 0 ? colors.primary : colors.secondary,
+                      color: "#ffffff",
                       fontWeight: 800,
-                      mb: 0.5,
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      color: isDark ? "#ffffff" : "#111111",
+                      border: "4px solid rgba(255,255,255,0.92)",
+                      boxShadow: "0 18px 40px rgba(15,23,42,0.16)",
                     }}
                   >
+                    {member.name
+                      .split(" ")
+                      .slice(-2)
+                      .map((part) => part[0])
+                      .join("")}
+                  </Avatar>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
                     {member.name}
                   </Typography>
                   <Typography
-                    variant="caption"
+                    variant="overline"
                     sx={{
-                      color: "#6366F1",
-                      fontWeight: 700,
+                      color: idx === 0 ? colors.primary : colors.secondary,
+                      fontWeight: 800,
+                      letterSpacing: "0.12em",
                       display: "block",
                       mb: 2,
-                      letterSpacing: "0.05em",
-                      textTransform: "uppercase",
                     }}
                   >
                     {member.role}
                   </Typography>
                   <Typography
-                    variant="body2"
-                    sx={{
-                      color: isDark ? "#9CA3AF" : "#6B7280",
-                      lineHeight: 1.6,
-                    }}
+                    variant="body1"
+                    sx={{ color: theme.palette.text.secondary, lineHeight: 1.8 }}
                   >
                     {member.bio}
                   </Typography>
@@ -533,38 +530,32 @@ export default function About() {
         </Container>
       </Box>
 
-      {}
-      <Box sx={{ py: { xs: 10, md: 14 } }}>
+      <Box sx={{ py: { xs: 10, md: 12 } }}>
         <Container maxWidth="sm">
           <Card
             sx={{
               p: { xs: 4, sm: 5 },
               borderRadius: 5,
               border: isDark
-                ? "1px solid rgba(255,255,255,0.06)"
-                : "1px solid rgba(0,0,0,0.04)",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.03)",
-              backgroundColor: isDark ? "#1a1a1a" : "#ffffff",
+                ? "1px solid rgba(255,255,255,0.08)"
+                : "1px solid rgba(15,23,42,0.08)",
+              boxShadow: "0 24px 60px rgba(15,23,42,0.08)",
+              backgroundColor: isDark ? "#111827" : "#ffffff",
             }}
           >
             <Box sx={{ textAlign: "center", mb: 4 }}>
               <Typography
                 variant="h4"
-                sx={{
-                  fontWeight: 900,
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  mb: 1,
-                  color: isDark ? "#ffffff" : "#111111",
-                }}
+                sx={{ fontWeight: 900, mb: 1, color: isDark ? "#fff" : colors.text }}
               >
                 Hợp tác & Đồng hành
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ color: isDark ? "#9CA3AF" : "#6B7280" }}
+                sx={{ color: theme.palette.text.secondary }}
               >
-                Chào đón các trường học, trung tâm y tế, đơn vị tài trợ cùng
-                chung tay đẩy lùi gù lưng học đường.
+                Chào đón các trường học, tổ chức và đối tác cùng chung tay lan
+                tỏa kiến thức bảo vệ cột sống cho người trẻ.
               </Typography>
             </Box>
 
@@ -579,7 +570,6 @@ export default function About() {
               onSubmit={handleSubmit}
               sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}
             >
-              {}
               <TextField
                 name="hp_field"
                 value={formData.hp_field}
@@ -600,7 +590,7 @@ export default function About() {
                 required
                 fullWidth
                 type="email"
-                label="Địa chỉ Email"
+                label="Địa chỉ email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
@@ -608,7 +598,7 @@ export default function About() {
               />
               <TextField
                 fullWidth
-                label="Tên trường học / Tổ chức (nếu có)"
+                label="Tên trường học / tổ chức"
                 name="org"
                 value={formData.org}
                 onChange={handleInputChange}
@@ -619,7 +609,7 @@ export default function About() {
                 fullWidth
                 multiline
                 rows={4}
-                label="Nội dung tin nhắn liên hệ"
+                label="Nội dung liên hệ"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
@@ -633,11 +623,10 @@ export default function About() {
                   borderRadius: 3,
                   py: 1.5,
                   fontWeight: 700,
-                  backgroundColor: "#111111",
+                  backgroundColor: colors.primary,
                   color: "#ffffff",
-                  textTransform: "none",
-                  mt: 2,
-                  "&:hover": { backgroundColor: "#222222" },
+                  mt: 1,
+                  "&:hover": { backgroundColor: "#173175" },
                 }}
               >
                 {isSubmitting ? "Đang gửi..." : "Gửi thông tin liên hệ"}
@@ -647,7 +636,6 @@ export default function About() {
         </Container>
       </Box>
 
-      {}
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
@@ -658,7 +646,8 @@ export default function About() {
           severity="success"
           sx={{ width: "100%", borderRadius: 2 }}
         >
-          Gửi tin nhắn liên hệ thành công! Chúng tôi sẽ phản hồi trong 24 giờ.
+          Gửi tin nhắn liên hệ thành công! Chúng tôi sẽ phản hồi sớm nhất có
+          thể.
         </Alert>
       </Snackbar>
     </Box>

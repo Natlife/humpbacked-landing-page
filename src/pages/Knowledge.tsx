@@ -56,7 +56,7 @@ export default function Knowledge() {
 
   const featuredArticle: Article = {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80',
     tags: ['Nổi bật', 'Nghiên cứu'],
     title: 'Tại sao giới trẻ ngày càng gù lưng nhiều hơn?',
     summary: 'Nghiên cứu mới nhất từ Viện Cột sống Việt Nam cho thấy tỷ lệ gù lưng ở học sinh THPT tăng 34% trong 5 năm qua. Điều gì đang xảy ra?',
@@ -69,7 +69,7 @@ export default function Knowledge() {
     featuredArticle,
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1522898467493-49726bf28798?auto=format&fit=crop&w=600&q=80',
       tags: ['Bài tập'],
       title: '5 bài tập kéo giãn cột sống dễ làm tại nhà',
       summary: 'Dành riêng cho dân văn phòng và học sinh phải ngồi học liên tục trên 6 tiếng mỗi ngày, giúp khôi phục linh hoạt khớp lưng.',
@@ -79,7 +79,7 @@ export default function Knowledge() {
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?auto=format&fit=crop&w=600&q=80',
       tags: ['Hướng dẫn'],
       title: 'Ergonomics 101: Thiết lập góc học tập đúng chuẩn',
       summary: 'Hướng dẫn chi tiết cách điều chỉnh chiều cao bàn ghế, khoảng cách màn hình để bảo vệ cổ.',
@@ -109,7 +109,7 @@ export default function Knowledge() {
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=600&q=80',
       tags: ['Kiến thức'],
       title: 'Cách tự kiểm tra độ gù lưng tại nhà bằng thước dây',
       summary: 'Chỉ cần một bức tường phẳng và một chiếc thước dây nhỏ, bạn có thể tự đánh giá được độ gù lưng của mình trong vòng 2 phút.',
@@ -119,7 +119,7 @@ export default function Knowledge() {
     },
     {
       id: 7,
-      image: 'https://images.unsplash.com/photo-1522844990619-4951c40f3edf?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?auto=format&fit=crop&w=600&q=80',
       tags: ['Bài tập'],
       title: 'Bài tập yoga chữa gù lưng hiệu quả cho người mới',
       summary: 'Tập trung vào 4 tư thế kinh điển: Tư thế con mèo/con bò, tư thế rắn hổ mang, tư thế nhân sư và tư thế em bé để giải tỏa áp lực.',
@@ -129,7 +129,7 @@ export default function Knowledge() {
     },
     {
       id: 8,
-      image: 'https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80',
       tags: ['Cảnh báo'],
       title: 'Những sai lầm tai hại khi đeo đai chống gù lưng',
       summary: 'Đeo đai quá 2 tiếng một ngày làm yếu cơ lưng vai do bị phụ thuộc vào đai, gây phản tác dụng nghiêm trọng đối với tư thế tự nhiên.',

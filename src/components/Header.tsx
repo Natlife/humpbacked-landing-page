@@ -1,33 +1,27 @@
 import { useState } from "react";
 import {
   AppBar,
-  Toolbar,
-  Typography,
   Box,
   Button,
-  IconButton,
   Container,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  useTheme,
+  Toolbar,
+  Typography,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import {
-  WbSunny as WbSunnyIcon,
-  NightsStay as NightsStayIcon,
-  Menu as MenuIcon,
   Close as CloseIcon,
-  HeartBroken,
+  Favorite as FavoriteIcon,
+  Menu as MenuIcon,
+  NightsStay as NightsStayIcon,
+  WbSunny as WbSunnyIcon,
 } from "@mui/icons-material";
-
-
-
-
-
-
 
 interface HeaderProps {
   activeTab: string;
@@ -46,11 +40,17 @@ export default function Header({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const colors = {
+    primary: "#1E3A8A",
+    secondary: "#2DD4BF",
+    text: "#0F172A",
+  };
+
   const navItems = [
     { id: "home", label: "Trang chủ" },
     { id: "knowledge", label: "Góc kiến thức" },
     { id: "quiz", label: "Kiểm tra tư thế" },
-    { id: "challenges", label: "Thử thách" },
+    { id: "challenges", label: "Challenge 21 days" },
     { id: "about", label: "Về chúng tôi" },
   ];
 
@@ -59,64 +59,52 @@ export default function Header({
     setMobileOpen(false);
   };
 
-  const appBarStyles = {
-    position: "sticky",
-    top: 0,
-    zIndex: 1100,
-    backgroundColor:
-      mode === "dark" ? "rgba(17, 17, 17, 0.85)" : "rgba(255, 255, 255, 0.85)",
-    backdropFilter: "blur(16px)",
-    WebkitBackdropFilter: "blur(16px)",
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    boxShadow: "none",
-  };
-
   return (
-    <AppBar sx={appBarStyles}>
+    <AppBar
+      sx={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1100,
+        backgroundColor:
+          mode === "dark" ? "rgba(11, 17, 32, 0.82)" : "rgba(248, 250, 252, 0.82)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        boxShadow: "none",
+      }}
+    >
       <Container maxWidth="lg">
-        <Toolbar
-          disableGutters
-          sx={{ height: 80, justifyContent: "space-between" }}
-        >
-          {}
+        <Toolbar disableGutters sx={{ height: 80, justifyContent: "space-between" }}>
           <Box
             onClick={() => handleNavClick("home")}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              cursor: "pointer",
-            }}
+            sx={{ display: "flex", alignItems: "center", gap: 1.5, cursor: "pointer" }}
           >
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 36,
-                height: 36,
+                width: 38,
+                height: 38,
                 borderRadius: "50%",
-                backgroundColor:
-                  theme.palette.mode === "dark" ? "#ffffff" : "#111111",
-                color: theme.palette.mode === "dark" ? "#111111" : "#ffffff",
+                background: "linear-gradient(135deg, #1E3A8A 0%, #2DD4BF 100%)",
+                color: "#ffffff",
               }}
             >
-              <HeartBroken sx={{ fontSize: 20 }} />
+              <FavoriteIcon sx={{ fontSize: 20 }} />
             </Box>
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 900,
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 color: theme.palette.text.primary,
-                letterSpacing: "0.05em",
+                letterSpacing: "0.04em",
               }}
             >
-              Demo
+              Đứng Thẳng
             </Typography>
           </Box>
 
-          {}
           {!isMobile && (
             <Box sx={{ display: "flex", gap: 1 }}>
               {navItems.map((item) => {
@@ -129,20 +117,18 @@ export default function Header({
                       px: 2,
                       py: 1,
                       borderRadius: 99,
-                      color: isActive
-                        ? theme.palette.text.primary
-                        : theme.palette.text.secondary,
+                      color: isActive ? colors.primary : theme.palette.text.secondary,
                       backgroundColor: isActive
-                        ? theme.palette.mode === "dark"
-                          ? "rgba(255, 255, 255, 0.08)"
-                          : "rgba(17, 17, 17, 0.05)"
+                        ? mode === "dark"
+                          ? "rgba(30,58,138,0.24)"
+                          : "rgba(30,58,138,0.08)"
                         : "transparent",
                       fontWeight: isActive ? 700 : 500,
                       "&:hover": {
                         backgroundColor:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255, 255, 255, 0.05)"
-                            : "rgba(17, 17, 17, 0.03)",
+                          mode === "dark"
+                            ? "rgba(255,255,255,0.05)"
+                            : "rgba(15,23,42,0.04)",
                       },
                     }}
                   >
@@ -153,7 +139,6 @@ export default function Header({
             </Box>
           )}
 
-          {}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
             <IconButton
               onClick={toggleTheme}
@@ -176,15 +161,12 @@ export default function Header({
                 variant="contained"
                 onClick={() => handleNavClick("quiz")}
                 sx={{
-                  backgroundColor:
-                    theme.palette.mode === "dark" ? "#ffffff" : "#111111",
-                  color: theme.palette.mode === "dark" ? "#111111" : "#ffffff",
+                  backgroundColor: colors.primary,
+                  color: "#ffffff",
                   borderRadius: 99,
                   px: 3,
-                  "&:hover": {
-                    backgroundColor:
-                      theme.palette.mode === "dark" ? "#f3f4f6" : "#1f2937",
-                  },
+                  fontWeight: 700,
+                  "&:hover": { backgroundColor: "#173175" },
                 }}
               >
                 Thử ngay
@@ -203,7 +185,6 @@ export default function Header({
         </Toolbar>
       </Container>
 
-      {}
       <Drawer
         anchor="top"
         open={mobileOpen}
@@ -219,47 +200,31 @@ export default function Header({
           },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: 3,
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 32,
-                height: 32,
+                width: 34,
+                height: 34,
                 borderRadius: "50%",
-                backgroundColor:
-                  theme.palette.mode === "dark" ? "#ffffff" : "#111111",
-                color: theme.palette.mode === "dark" ? "#111111" : "#ffffff",
+                background: "linear-gradient(135deg, #1E3A8A 0%, #2DD4BF 100%)",
+                color: "#ffffff",
               }}
             >
-              <HeartBroken sx={{ fontSize: 18 }} />
+              <FavoriteIcon sx={{ fontSize: 18 }} />
             </Box>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}
-            >
-              Demo
+            <Typography variant="h6" sx={{ fontWeight: 800 }}>
+              Đứng Thẳng
             </Typography>
           </Box>
-          <IconButton
-            onClick={() => setMobileOpen(false)}
-            sx={{ color: theme.palette.text.primary }}
-          >
+          <IconButton onClick={() => setMobileOpen(false)} sx={{ color: theme.palette.text.primary }}>
             <CloseIcon />
           </IconButton>
         </Box>
+
         <List sx={{ width: "100%" }}>
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
@@ -271,9 +236,9 @@ export default function Header({
                     textAlign: "center",
                     borderRadius: 2,
                     backgroundColor: isActive
-                      ? theme.palette.mode === "dark"
-                        ? "rgba(255, 255, 255, 0.08)"
-                        : "rgba(17, 17, 17, 0.05)"
+                      ? mode === "dark"
+                        ? "rgba(30,58,138,0.24)"
+                        : "rgba(30,58,138,0.08)"
                       : "transparent",
                     mb: 1,
                   }}
@@ -282,9 +247,7 @@ export default function Header({
                     <Typography
                       sx={{
                         fontWeight: isActive ? 700 : 500,
-                        color: isActive
-                          ? theme.palette.text.primary
-                          : theme.palette.text.secondary,
+                        color: isActive ? colors.primary : theme.palette.text.secondary,
                       }}
                     >
                       {item.label}
@@ -300,10 +263,10 @@ export default function Header({
               fullWidth
               onClick={() => handleNavClick("quiz")}
               sx={{
-                backgroundColor:
-                  theme.palette.mode === "dark" ? "#ffffff" : "#111111",
-                color: theme.palette.mode === "dark" ? "#111111" : "#ffffff",
+                backgroundColor: colors.primary,
+                color: "#ffffff",
                 py: 1.5,
+                "&:hover": { backgroundColor: "#173175" },
               }}
             >
               Thử ngay

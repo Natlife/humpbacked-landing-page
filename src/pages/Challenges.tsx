@@ -53,6 +53,13 @@ interface Challenge {
 export default function Challenges() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const colors = {
+    primary: '#1E3A8A',
+    secondary: '#2DD4BF',
+    background: '#F8FAFC',
+    text: '#0F172A',
+    accent: '#F59E0B',
+  };
 
   const [selectedDifficulty, setSelectedDifficulty] = useState('Tất cả');
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
@@ -74,7 +81,7 @@ export default function Challenges() {
       difficulty: 'Dễ',
       duration: 7,
       participants: 4230,
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1522898467493-49726bf28798?auto=format&fit=crop&w=600&q=80',
       reward: 'Posture Beginner Badge + Cẩm nang dinh dưỡng PDF',
       tasks: [
         'Ngày 1: Đo độ gù vai bằng góc tường phẳng trong 2 phút.',
@@ -119,7 +126,7 @@ export default function Challenges() {
       difficulty: 'Nâng cao',
       duration: 21,
       participants: 1870,
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?auto=format&fit=crop&w=600&q=80',
       reward: 'Posture Master Certification + Khóa học Zoom 1-1 với cố vấn chuyên môn',
       tasks: [
         'Ngày 1: Thiết lập báo thức nhắc nhở tư thế sau mỗi 45 phút học/làm việc.',
@@ -169,7 +176,7 @@ export default function Challenges() {
       difficulty: 'Dễ',
       duration: 10,
       participants: 1950,
-      image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1713946598456-a25ab3645730?auto=format&fit=crop&w=600&q=80',
       reward: 'Neck Guardian Badge + 3 hình nền điện thoại nhắc nhở thẳng lưng',
       tasks: [
         'Ngày 1: Luôn nâng điện thoại cao ngang tầm mắt khi lướt mạng xã hội.',
@@ -238,11 +245,13 @@ export default function Challenges() {
   }, [selectedDifficulty]);
 
   return (
-    <Box sx={{ backgroundColor: isDark ? '#121212' : '#ffffff', minHeight: '100vh', pb: 10 }}>
+    <Box sx={{ backgroundColor: isDark ? '#0B1120' : colors.background, minHeight: '100vh', pb: 10 }}>
       {}
       <Box
         sx={{
-          backgroundColor: '#111111',
+          background: isDark
+            ? 'linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%)'
+            : 'linear-gradient(135deg, #0F172A 0%, #1E3A8A 70%, #2DD4BF 165%)',
           color: '#ffffff',
           pt: { xs: 8, md: 10 },
           pb: { xs: 8, md: 10 },
@@ -252,9 +261,9 @@ export default function Challenges() {
         <Container maxWidth="lg">
           <Typography
             variant="overline"
-            sx={{ color: '#6366F1', fontWeight: 800, letterSpacing: '0.15em', display: 'block', mb: 2 }}
+            sx={{ color: colors.secondary, fontWeight: 800, letterSpacing: '0.15em', display: 'block', mb: 2 }}
           >
-            ĐỒNG HÀNH CÙNG CỘNG ĐỒNG
+            CHALLENGE 21 DAYS
           </Typography>
           <Typography
             variant="h1"
@@ -267,17 +276,17 @@ export default function Challenges() {
               mb: 3,
             }}
           >
-            Thử thách
+            Challenge 21 days
           </Typography>
-          <Typography variant="body1" sx={{ color: '#9CA3AF', maxWidth: 640, fontSize: '1.05rem', mb: 5, lineHeight: 1.6 }}>
-            Lựa chọn thử thách phù hợp, hoàn thành cùng cộng đồng và nhận phần thưởng xứng đáng. Mỗi ngày là một bước tiến mới.
+          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.78)', maxWidth: 640, fontSize: '1.05rem', mb: 5, lineHeight: 1.6 }}>
+            Tham gia thử thách 21 ngày vì 1 cột sống khoẻ. Mỗi ngày là một bước nhỏ để xây dựng tư thế đúng và thói quen tốt lâu dài.
           </Typography>
 
           {}
           <Grid container spacing={3} sx={{ maxWidth: 600 }}>
             {stats.map((s, idx) => (
               <Grid size={4} key={idx}>
-                <Typography variant="h4" sx={{ fontWeight: 900, color: '#10B981', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <Typography variant="h4" sx={{ fontWeight: 900, color: colors.secondary, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   {s.value}
                 </Typography>
                 <Typography variant="caption" sx={{ color: '#9CA3AF', display: 'block', mt: 0.5 }}>
@@ -304,12 +313,12 @@ export default function Challenges() {
                   py: 2.2,
                   borderRadius: 3,
                   fontWeight: 700,
-                  backgroundColor: isSelected ? '#111111' : isDark ? '#1a1a1a' : '#F3F4F6',
+                  backgroundColor: isSelected ? colors.primary : isDark ? '#111827' : '#ffffff',
                   color: isSelected ? '#ffffff' : theme.palette.text.secondary,
-                  border: isSelected ? '1px solid #111111' : isDark ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.04)',
+                  border: isSelected ? `1px solid ${colors.primary}` : isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(15,23,42,0.08)',
                   cursor: 'pointer',
                   '&:hover': {
-                    backgroundColor: isSelected ? '#111111' : isDark ? '#262626' : '#E5E7EB',
+                    backgroundColor: isSelected ? '#173175' : isDark ? '#1F2937' : '#F8FAFC',
                   },
                 }}
               />
@@ -333,9 +342,9 @@ export default function Challenges() {
                     display: 'flex',
                     flexDirection: 'column',
                     borderRadius: 4,
-                    border: isDark ? '1px solid rgba(255, 255, 255, 0.06)' : '1px solid rgba(0, 0, 0, 0.04)',
+                    border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(15, 23, 42, 0.08)',
                     boxShadow: 'none',
-                    backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
+                    backgroundColor: isDark ? '#111827' : '#ffffff',
                     position: 'relative',
                   }}
                 >
@@ -380,7 +389,7 @@ export default function Challenges() {
                           position: 'absolute',
                           top: 16,
                           left: 16,
-                          backgroundColor: challenge.difficulty === 'Dễ' ? '#10B981' : challenge.difficulty === 'Trung bình' ? '#F59E0B' : '#EF4444',
+                          backgroundColor: challenge.difficulty === 'Dễ' ? colors.secondary : challenge.difficulty === 'Trung bình' ? colors.accent : '#DC2626',
                           color: '#ffffff',
                           fontWeight: 800,
                           fontSize: '0.75rem',
@@ -397,7 +406,7 @@ export default function Challenges() {
                         fontWeight: 800,
                         mb: 1.5,
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        color: isDark ? '#ffffff' : '#111111',
+                        color: isDark ? '#ffffff' : colors.text,
                       }}
                     >
                       {challenge.title}
@@ -415,10 +424,10 @@ export default function Challenges() {
                       {isJoined && (
                         <Box sx={{ mb: 3 }}>
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                            <Typography variant="caption" sx={{ fontWeight: 700, color: '#6366F1' }}>
+                            <Typography variant="caption" sx={{ fontWeight: 700, color: colors.primary }}>
                               Tiến độ: {completedCount}/{challenge.duration} Ngày
                             </Typography>
-                            <Typography variant="caption" sx={{ fontWeight: 700, color: '#6366F1' }}>
+                            <Typography variant="caption" sx={{ fontWeight: 700, color: colors.primary }}>
                               {progressPercent}%
                             </Typography>
                           </Box>
@@ -430,7 +439,7 @@ export default function Challenges() {
                               borderRadius: 3,
                               backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)',
                               '& .MuiLinearProgress-bar': {
-                                backgroundColor: '#6366F1',
+                                backgroundColor: colors.primary,
                                 borderRadius: 3,
                               },
                             }}
@@ -445,15 +454,15 @@ export default function Challenges() {
                         onClick={() => setSelectedChallenge(challenge)}
                         sx={{
                           borderRadius: 3,
-                          backgroundColor: isJoined ? 'transparent' : '#111111',
-                          borderColor: isJoined ? '#111111' : undefined,
-                          color: isJoined ? '#111111' : '#ffffff',
+                          backgroundColor: isJoined ? 'transparent' : colors.primary,
+                          borderColor: isJoined ? colors.primary : undefined,
+                          color: isJoined ? colors.primary : '#ffffff',
                           fontWeight: 700,
                           textTransform: 'none',
                           py: 1.2,
                           '&:hover': {
-                            backgroundColor: isJoined ? 'rgba(17,17,17,0.03)' : '#222222',
-                            borderColor: isJoined ? '#111111' : undefined,
+                            backgroundColor: isJoined ? 'rgba(30,58,138,0.04)' : '#173175',
+                            borderColor: isJoined ? colors.primary : undefined,
                           },
                           '&.Mui-disabled': {
                             backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
@@ -482,7 +491,7 @@ export default function Challenges() {
             sx: {
               borderRadius: 6,
               backgroundImage: 'none',
-              backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
+              backgroundColor: isDark ? '#111827' : '#ffffff',
               p: 3,
             },
           },
@@ -507,8 +516,8 @@ export default function Challenges() {
               {}
               <Box
                 sx={{
-                  backgroundColor: isDark ? 'rgba(99, 102, 241, 0.08)' : 'rgba(99, 102, 241, 0.03)',
-                  border: '1px solid rgba(99, 102, 241, 0.15)',
+                  backgroundColor: isDark ? 'rgba(30, 58, 138, 0.18)' : 'rgba(30, 58, 138, 0.04)',
+                  border: '1px solid rgba(30, 58, 138, 0.15)',
                   borderRadius: 3,
                   p: 2.5,
                   mb: 4,
@@ -517,12 +526,12 @@ export default function Challenges() {
                   gap: 2,
                 }}
               >
-                <TrophyIcon sx={{ color: '#F59E0B', fontSize: 28 }} />
+                <TrophyIcon sx={{ color: colors.accent, fontSize: 28 }} />
                 <Box>
-                  <Typography variant="caption" sx={{ color: '#6366F1', fontWeight: 800, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 800, display: 'block' }}>
                     PHẦN THƯỞNG HOÀN THÀNH
                   </Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: isDark ? '#ffffff' : '#111111' }}>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: isDark ? '#ffffff' : colors.text }}>
                     {selectedChallenge.reward}
                   </Typography>
                 </Box>
@@ -560,14 +569,14 @@ export default function Challenges() {
                           <Checkbox
                             checked={isChecked}
                             onChange={() => handleToggleTask(selectedChallenge.id, idx)}
-                            sx={{ color: '#6366F1', '&.Mui-checked': { color: '#6366F1' } }}
+                            sx={{ color: colors.primary, '&.Mui-checked': { color: colors.primary } }}
                           />
                         </ListItemIcon>
                         <ListItemText>
                           <Typography
                             variant="body2"
                             sx={{
-                              color: isChecked ? '#9CA3AF' : isDark ? '#ffffff' : '#111111',
+                              color: isChecked ? '#94A3B8' : isDark ? '#ffffff' : colors.text,
                               textDecoration: isChecked ? 'line-through' : 'none',
                             }}
                           >
@@ -590,10 +599,10 @@ export default function Challenges() {
                     borderRadius: 3,
                     py: 1.5,
                     fontWeight: 700,
-                    backgroundColor: '#111111',
+                    backgroundColor: colors.primary,
                     color: '#ffffff',
                     textTransform: 'none',
-                    '&:hover': { backgroundColor: '#222222' },
+                    '&:hover': { backgroundColor: '#173175' },
                   }}
                 >
                   Tham gia thử thách ngay
@@ -607,12 +616,12 @@ export default function Challenges() {
                     borderRadius: 3,
                     py: 1.5,
                     fontWeight: 700,
-                    borderColor: '#111111',
-                    color: '#111111',
+                    borderColor: colors.primary,
+                    color: colors.primary,
                     textTransform: 'none',
                     '&:hover': {
-                      borderColor: '#111111',
-                      backgroundColor: 'rgba(17,17,17,0.03)',
+                      borderColor: colors.primary,
+                      backgroundColor: 'rgba(30,58,138,0.04)',
                     },
                   }}
                 >

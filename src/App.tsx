@@ -48,21 +48,21 @@ export default function App() {
         palette: {
           mode,
           primary: {
-            main: mode === 'dark' ? '#ffffff' : '#111111',
-            contrastText: mode === 'dark' ? '#111111' : '#ffffff',
+            main: '#1E3A8A',
+            contrastText: '#ffffff',
           },
           secondary: {
-            main: '#6366F1', 
+            main: '#2DD4BF',
           },
           background: {
-            default: mode === 'dark' ? '#121212' : '#f9fafb',
-            paper: mode === 'dark' ? '#1a1a1a' : '#ffffff',
+            default: mode === 'dark' ? '#0B1120' : '#F8FAFC',
+            paper: mode === 'dark' ? '#111827' : '#ffffff',
           },
           text: {
-            primary: mode === 'dark' ? '#f3f4f6' : '#111111',
-            secondary: mode === 'dark' ? '#9ca3af' : '#4b5563',
+            primary: mode === 'dark' ? '#F8FAFC' : '#0F172A',
+            secondary: mode === 'dark' ? '#CBD5E1' : '#475569',
           },
-          divider: mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+          divider: mode === 'dark' ? 'rgba(148, 163, 184, 0.18)' : 'rgba(15, 23, 42, 0.08)',
         },
         typography: {
           fontFamily: "'Inter', sans-serif",
